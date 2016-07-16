@@ -6,7 +6,7 @@
 /*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/26 12:07:18 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/07/16 12:37:05 by arnovan-         ###   ########.fr       */
+/*   Updated: 2016/07/16 15:14:15 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static int		calc(t_glob *g, t_obj_list *read)
 	t_vector	dist;
 
 	a = dot_prod(g->cam.dir, g->cam.dir);
-	dist = subtract_vec(g->ray.start, read->origin);
+	dist = subtract_vec(g->ray.start, read->sphere.origin);
 	b =  2 * dot_prod(g->cam.dir, dist);
-	c = (dot_prod(dist, dist) - (read->radius * read->radius));
+	c = (dot_prod(dist, dist) - (read->sphere.radius * read->sphere.radius));
 	discriminant = (b * b - 4 * a * c);
 	if (discriminant < 0)
 		return (0);
